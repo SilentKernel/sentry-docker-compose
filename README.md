@@ -17,7 +17,7 @@ Create the directory for your postgress data
 mkdir ./postgresql
 ```
 
-Replace all variable with yours in the docker-compose.yml file (domain, email parameters ... etc, please note this docker compose file is compatible with *** nginx-proxy and nginx-companion***
+Replace all variable with yours in the docker-compose.yml file (domain, email parameters ... etc, please note this docker compose file is compatible with ***nginx-proxy and nginx-companion***
 
 Then start basic service with
 ```shell
