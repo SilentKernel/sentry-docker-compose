@@ -1,6 +1,6 @@
 # sentry-docker-compose
 
-This docker-compose file is an updated version of : (https://gist.github.com/mottosso/e5568a580f92ada192ad2df33ad84d68)
+This docker-compose file is an updated version of : https://gist.github.com/mottosso/e5568a580f92ada192ad2df33ad84d68
 
 ## How to ?
 To begin generate your private key with :
