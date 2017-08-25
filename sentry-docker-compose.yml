@@ -32,11 +32,11 @@ sentry-cron:
   image: sentry
   environment:
     - SENTRY_SECRET_KEY=your-generated-key
-    - SENTRY_EMAIL_HOST=your-smtp-host
-    - SENTRY_EMAIL_PORT=587
-    - SENTRY_EMAIL_USER=your.smtp.username
-    - SENTRY_EMAIL_PASSWORD=your-smtp-password
-    - SENTRY_SERVER_EMAIL=your.sender.adress
+    #- SENTRY_EMAIL_HOST=your-smtp-host
+    #- SENTRY_EMAIL_PORT=587
+    #- SENTRY_EMAIL_USER=your.smtp.username
+    #- SENTRY_EMAIL_PASSWORD=your-smtp-password
+    #- SENTRY_SERVER_EMAIL=your.sender.adress
   links:
     - redis
     - postgres
