@@ -25,7 +25,7 @@ docker-compose up -d redis postgres sentry
 ```
 
 Launch the update of sentry (will create / update the database and ask you for your admin account)
-``hell
+```shell
 docker exec -it [SENTRY CONTAINER] sentry upgrade
 ```
 *** [SENTRY CONTAINER] should be sentry_sentry_1 if it's the first instance ***
