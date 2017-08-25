@@ -32,7 +32,7 @@ docker exec -it [SENTRY CONTAINER] sentry upgrade
 
 Finally just launch the all stack :
 
-`¨¨shell
+```shell
 docker-compose up -d
 ```
 
