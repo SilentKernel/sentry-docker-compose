@@ -28,7 +28,7 @@ Launch the update of sentry (will create / update the database and ask you for y
 ```shell
 docker exec -it [SENTRY CONTAINER] sentry upgrade
 ```
-*** [SENTRY CONTAINER] should be sentry_sentry_1 if it's the first instance ***
+***[SENTRY CONTAINER] should be sentry_sentry_1 if it's the first instance***
 
 Finally just launch the all stack :
 
