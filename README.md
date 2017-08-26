@@ -30,7 +30,7 @@ docker exec -it [SENTRY CONTAINER] sentry upgrade
 ```
 ***[SENTRY CONTAINER] should be sentry_sentry_1 if it's the first instance***
 
-Finally just launch the all stack :
+Finally just launch the stack :
 
 ```shell
 docker-compose up -d
