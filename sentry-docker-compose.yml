@@ -5,8 +5,8 @@ redis:
 postgres:
   image: postgres
   environment:
-    - POSTGRES_PASSWORD=sentry
-    - POSTGRES_USER=your-great-password
+    - POSTGRES_PASSWORD=your-great-password
+    - POSTGRES_USER=sentry
   volumes:
     - ./postgresql:/var/lib/postgresql/data
   restart: always
