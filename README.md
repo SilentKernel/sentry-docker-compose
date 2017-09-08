@@ -6,7 +6,7 @@ This docker-compose file is an updated version of : https://gist.github.com/mott
 To begin generate your private key with :
 
 ```shell
-docker run --rm sentry generate-secret-key
+docker run --rm sentry config generate-secret-key
 ```
 Then set replace "your-generated-key" with the generated key in the the file
 
