@@ -2,96 +2,72 @@ version: '3'
 services:
   redis:
     container_name: sentry-redis
-    image: redis
+    image: redis:4.0
     restart: always
-    networks:
-      - backend
+    network_mode: bridge
   postgres:
     container_name: sentry-postgres
-    image: postgres
+    image: postgres:10.3
     environment:
       - POSTGRES_USER=sentry
-      - POSTGRES_PASSWORD=changeit
+      - POSTGRES_PASSWORD=change_it
     volumes:
       - ./postgresql:/var/lib/postgresql/data
     restart: always
-    networks:
-      - backend
+    network_mode: bridge
   sentry-cron:
     container_name: sentry-cron
-    image: sentry
+    image: sentry:8.22
     environment:
-      - SENTRY_SECRET_KEY=changeit
-      - SENTRY_EMAIL_HOST=changeit
+      - SENTRY_SECRET_KEY=generate_it
+      - SENTRY_EMAIL_HOST=change_it
       - SENTRY_EMAIL_PORT=587
-      - SENTRY_EMAIL_USER=changeit
-      - SENTRY_EMAIL_PASSWORD=changeit
-      - SENTRY_SERVER_EMAIL=changeit
-      - SENTRY_REDIS_HOST=redis
-      - SENTRY_POSTGRES_HOST=postgres
-      - SENTRY_DB_USER=sentry
-      - SENTRY_DB_PASSWORD=changeit
+      - SENTRY_EMAIL_USER=change_it
+      - SENTRY_EMAIL_PASSWORD=change_it
+      - SENTRY_SERVER_EMAIL=change_it
+      - SENTRY_REDIS_PORT=6379
+      - SENTRY_POSTGRES_PORT=5432
     links:
       - redis
       - postgres
     command: sentry run cron
     restart: always
-    networks:
-      - backend
+    network_mode: bridge
   sentry-worker:
     container_name: sentry-worker
-    image: sentry
+    image: sentry:8.22
     environment:
-      - SENTRY_SECRET_KEY=changeit
-      - SENTRY_EMAIL_HOST=changeit
+      - SENTRY_SECRET_KEY=generate_it
+      - SENTRY_EMAIL_HOST=change_it
       - SENTRY_EMAIL_PORT=587
-      - SENTRY_EMAIL_USER=changeit
-      - SENTRY_EMAIL_PASSWORD=changeit
-      - SENTRY_SERVER_EMAIL=changeit
-      - SENTRY_REDIS_HOST=redis
-      - SENTRY_POSTGRES_HOST=postgres
-      - SENTRY_DB_USER=sentry
-      - SENTRY_DB_PASSWORD=changeit
+      - SENTRY_EMAIL_USER=change_it
+      - SENTRY_EMAIL_PASSWORD=change_it
+      - SENTRY_SERVER_EMAIL=change_it
+      - SENTRY_REDIS_PORT=6379
+      - SENTRY_POSTGRES_PORT=5432
     links:
       - redis
       - postgres
     command: sentry run worker
     restart: always
-    networks:
-      - backend
+    network_mode: bridge
   sentry:
     container_name: sentry
-    image: sentry
+    image: sentry:8.22
     environment:
-      - VIRTUAL_HOST=changeit
-      - LETSENCRYPT_HOST=changeit
-      - LETSENCRYPT_EMAIL=changeit
-      - SENTRY_SECRET_KEY=changeit
-      - SENTRY_EMAIL_HOST=changeit
+      - VIRTUAL_HOST=change_it
+      - LETSENCRYPT_HOST=change_it
+      - LETSENCRYPT_EMAIL=change_it
+      - SENTRY_SECRET_KEY=generate_it
+      - SENTRY_EMAIL_HOST=change_it
       - SENTRY_EMAIL_PORT=587
-      - SENTRY_EMAIL_USER=changeit
-      - SENTRY_EMAIL_PASSWORD=changeit
-      - SENTRY_SERVER_EMAIL=changeit
-      - SENTRY_REDIS_HOST=redis
-      - SENTRY_POSTGRES_HOST=postgres
-      - SENTRY_DB_USER=sentry
-      - SENTRY_DB_PASSWORD=changeit
+      - SENTRY_EMAIL_USER=change_it
+      - SENTRY_EMAIL_PASSWORD=change_it
+      - SENTRY_SERVER_EMAIL=change_it
+      - SENTRY_REDIS_PORT=6379
+      - SENTRY_POSTGRES_PORT=5432
     links:
       - redis
       - postgres
-    labels:
-      - networks=bridge
-    networks:
-      - backend
     restart: always
-  connect-bridge:
-    image: stmllr/docker-client
-    networks:
-      - backend
-    volumes:
-     - /var/run/docker.sock:/var/run/docker.sock:ro
-    depends_on:
-       - sentry
-    command: /bin/sh -c 'docker ps -f label=networks=bridge --format "{{.ID}}" | xargs docker network connect bridge'
-networks:
-  backend:
+    network_mode: bridge
